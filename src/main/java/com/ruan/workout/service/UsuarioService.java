@@ -15,18 +15,19 @@ public class UsuarioService {
     private UsuarioRepository usuarioRepository;
     
     public void cadastro(UsuarioDTO dto) {
-        if (usuarioRepository.existsUsuarioByEmailOrUsuario(dto.usuario(), dto.email())) {
+        if (usuarioRepository.existsUsuarioByEmailOrUsuario(dto.email(), dto.usuario())) {
             throw new ValidationUsuarioException("Usuario já cadastrado! ");
         }
         usuarioRepository.save(new Usuario(dto.usuario(), dto.password(), dto.email(), dto.name(), dto.idade()));
     }
 
     public void atualizarInformacoesUsuario(UsuarioDTO dto) {
-        if (!usuarioRepository.existsUsuarioByEmailOrUsuario(dto.usuario(), dto.email())) {
+        Usuario usuario = usuarioRepository.findByUsuario(dto.usuario());
+
+        if (usuario == null) {
             throw new ValidationUsuarioException("Usuario não cadastrado!");
         }
 
-        Usuario usuario = usuarioRepository.findByUsuario(dto.usuario());
         usuario.setEmail(dto.email());
         usuario.setPassword(dto.password());
         usuario.setIdade(dto.idade());
@@ -41,7 +42,7 @@ public class UsuarioService {
             throw new ValidationUsuarioException("Usuario não cadastrado!");
         }
 
-        if (usuario.getPassword().equals(dto.password())) {
+        if (!usuario.getPassword().equals(dto.password())) {
             throw new LoginException("Senha Incorreta!");
         }
 
