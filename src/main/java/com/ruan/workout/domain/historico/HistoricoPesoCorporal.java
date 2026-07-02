@@ -1,5 +1,6 @@
-package com.ruan.workout.model;
+package com.ruan.workout.domain.historico;
 
+import com.ruan.workout.domain.usuario.Usuario;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

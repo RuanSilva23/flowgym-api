@@ -1,6 +1,6 @@
 package com.ruan.workout.infra.security;
 
-import com.ruan.workout.repository.UsuarioRepository;
+import com.ruan.workout.domain.usuario.UsuarioRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

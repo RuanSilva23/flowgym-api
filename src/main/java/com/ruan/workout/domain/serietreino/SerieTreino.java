@@ -1,5 +1,7 @@
-package com.ruan.workout.model;
+package com.ruan.workout.domain.serietreino;
 
+import com.ruan.workout.domain.exercicio.Exercicio;
+import com.ruan.workout.domain.sessao.SessaoTreino;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

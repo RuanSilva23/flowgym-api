@@ -1,4 +1,4 @@
-package com.ruan.workout.model.Enums;
+package com.ruan.workout.domain.exercicio.enums;
 
 public enum GrupoMuscular {
     COSTAS,

@@ -1,4 +1,4 @@
-package com.ruan.workout.model.Enums;
+package com.ruan.workout.domain.usuario.enums;
 
 public enum RoleEnum {
     ROLE_DEV,

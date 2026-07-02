@@ -1,4 +1,4 @@
-package com.ruan.workout.dto;
+package com.ruan.workout.domain.usuario.dto;
 
 import lombok.Getter;
 import lombok.Setter;

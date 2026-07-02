@@ -1,22 +1,20 @@
 package com.ruan.workout.controller;
 
-import com.ruan.workout.dto.LoginDTO;
-import com.ruan.workout.dto.TokenDTO;
-import com.ruan.workout.dto.UsuarioDTO;
-import com.ruan.workout.exception.LoginException;
-import com.ruan.workout.service.UsuarioService;
+import com.ruan.workout.domain.usuario.dto.UsuarioDTO;
+import com.ruan.workout.domain.usuario.service.UsuarioService;
+import com.ruan.workout.infra.exception.ValidationUsuarioException;
 import jakarta.validation.ValidationException;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-
+@AllArgsConstructor
 @RestController
 @RequestMapping("/usuarios")
 public class UsuarioController {
-    @Autowired
     private UsuarioService usuarioService;
+
 
     @PostMapping("/cadastrar")
     public ResponseEntity<String> cadastrarUsuario(@RequestBody UsuarioDTO dto){
@@ -28,22 +26,12 @@ public class UsuarioController {
         }
     }
 
-    @PostMapping("/login")
-    public ResponseEntity<TokenDTO> login(@RequestBody LoginDTO dto){
-        try{
-            String token = usuarioService.login(dto);
-            return ResponseEntity.ok(new TokenDTO(token));
-        } catch (LoginException e) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
-        }
-    }
-
-    @PutMapping("/atualizar")
-    public ResponseEntity<String> atualizarUsuario(@RequestBody UsuarioDTO dto){
-        try{
-            usuarioService.atualizarInformacoesUsuario(dto);
-            return ResponseEntity.ok().build();
-        } catch (ValidationException e) {
+    @PutMapping("/atualizarsenha/{id}")
+    public ResponseEntity<String> atualizarSenha(@PathVariable Long id, @RequestParam String senhaAtual, @RequestBody String novaSenha) {
+        try {
+            usuarioService.atualizarSenha(id, senhaAtual, novaSenha);
+            return  ResponseEntity.status(HttpStatus.OK).build();
+        } catch (ValidationUsuarioException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }

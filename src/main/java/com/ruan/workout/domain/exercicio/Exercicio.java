@@ -1,7 +1,8 @@
-package com.ruan.workout.model;
+package com.ruan.workout.domain.exercicio;
 
-import com.ruan.workout.model.Enums.GrupoMuscular;
-import com.ruan.workout.model.Enums.TipoExercicio;
+import com.ruan.workout.domain.usuario.Usuario;
+import com.ruan.workout.domain.exercicio.enums.GrupoMuscular;
+import com.ruan.workout.domain.exercicio.enums.TipoExercicio;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

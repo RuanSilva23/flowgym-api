@@ -1,6 +1,5 @@
-package com.ruan.workout.repository;
+package com.ruan.workout.domain.sessao;
 
-import com.ruan.workout.model.SessaoTreino;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface SessaoTreinoRepository extends JpaRepository<SessaoTreino, Long> {
