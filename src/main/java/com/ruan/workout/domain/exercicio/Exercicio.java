@@ -20,6 +20,7 @@ public class Exercicio {
     private String nome;
     @Enumerated(EnumType.STRING)
     private GrupoMuscular grupoMuscular;
+    @Enumerated(EnumType.STRING)
     private TipoExercicio tipoExercicio;
     private LocalDateTime dataCadastro;
     @ManyToOne
