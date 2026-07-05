@@ -33,6 +33,7 @@ public class Usuario implements UserDetails {
     private BigDecimal pesoMeta;
     @Column(precision = 5, scale = 2)
     private BigDecimal altura;
+    @Enumerated(EnumType.STRING)
     private RoleEnum role;
     private LocalDateTime dataCadastro;
     private LocalDateTime dataAtualizacao;
