@@ -1,6 +1,7 @@
 package com.ruan.workout.domain.usuario;
 
 import com.ruan.workout.domain.usuario.enums.RoleEnum;
+import com.ruan.workout.domain.usuario.enums.StatusUsuario;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -34,6 +35,9 @@ public class Usuario implements UserDetails {
     private BigDecimal altura;
     private RoleEnum role;
     private LocalDateTime dataCadastro;
+    private LocalDateTime dataAtualizacao;
+    @Enumerated(EnumType.STRING)
+    private StatusUsuario status;
 
 
 

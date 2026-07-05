@@ -1,6 +1,7 @@
 package com.ruan.workout.domain.usuario.service;
 
 import com.ruan.workout.domain.usuario.dto.UsuarioDTO;
+import com.ruan.workout.domain.usuario.enums.StatusUsuario;
 import com.ruan.workout.infra.exception.ValidationUsuarioException;
 import com.ruan.workout.domain.usuario.Usuario;
 import com.ruan.workout.domain.usuario.UsuarioRepository;
@@ -56,6 +57,7 @@ public class UsuarioService {
 
     public void deletaUsuario(Long id) {
         Usuario usuario = usuarioRepository.findById(id).orElseThrow(() -> new ValidationUsuarioException("Usuario não encontrado"));
-        usuarioRepository.delete(usuario);
+        usuario.setStatus(StatusUsuario.INATIVO);
+        usuarioRepository.save(usuario);
     }
 }
