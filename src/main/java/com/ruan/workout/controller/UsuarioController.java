@@ -36,5 +36,17 @@ public class UsuarioController {
         }
     }
 
+    @DeleteMapping("/deletar/{id}")
+    public ResponseEntity<String> deletaUsuario(@PathVariable Long id) {
+        try {
+            usuarioService.deletaUsuario(id);
+            return ResponseEntity.status(HttpStatus.OK).build();
+
+        } catch (ValidationUsuarioException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+
+        }
+    }
+
 
 }

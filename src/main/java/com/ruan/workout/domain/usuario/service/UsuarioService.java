@@ -53,4 +53,9 @@ public class UsuarioService {
         // Salva no Banco
         usuarioRepository.save(usuario);
     }
+
+    public void deletaUsuario(Long id) {
+        Usuario usuario = usuarioRepository.findById(id).orElseThrow(() -> new ValidationUsuarioException("Usuario não encontrado"));
+        usuarioRepository.delete(usuario);
+    }
 }
