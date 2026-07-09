@@ -34,4 +34,15 @@ public class ExercicioController {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
+
+    @GetMapping("/listar")
+    public ResponseEntity<String> listarExercicios() {
+        try {
+            exercicioService.listar();
+            return ResponseEntity.ok().build();
+
+        } catch (ValidationExercicioException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
 }
