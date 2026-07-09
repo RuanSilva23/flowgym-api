@@ -38,11 +38,11 @@ public class SecurityConfig {
                 .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(req -> {
                     req.requestMatchers(HttpMethod.POST, "/api/auth/login").permitAll();
-                    req.requestMatchers(HttpMethod.POST, "/api/auth/register").permitAll();
+                    req.requestMatchers(HttpMethod.POST, "/usuarios/cadastrar").permitAll();
 
-                    req.requestMatchers(HttpMethod.POST, "/api/treinos/**").hasAnyRole("ROLE_PROFESSOR", "ROLE_ADMIN", "ROLE_DEV");
+                    req.requestMatchers(HttpMethod.POST, "/api/treinos/**").hasAnyRole("PROFESSOR", "ADMIN", "DEV");
 
-                    req.requestMatchers("/api/financeiro/**").hasAnyRole("ROLE_ADMIN", "ROLE_DEV");
+                    req.requestMatchers("/api/financeiro/**").hasAnyRole("ADMIN", "DEV");
 
                     req.anyRequest().authenticated();
                 })
