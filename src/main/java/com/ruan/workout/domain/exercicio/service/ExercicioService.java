@@ -52,4 +52,8 @@ public class ExercicioService {
         exercicioRepository.save(exercicio);
 
     }
+
+    public void listar() {
+        exercicioRepository.findAll();
+    }
 }
