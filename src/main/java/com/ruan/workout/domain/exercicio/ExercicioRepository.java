@@ -3,6 +3,7 @@ package com.ruan.workout.domain.exercicio;
 import com.ruan.workout.domain.usuario.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface ExercicioRepository extends JpaRepository<Exercicio, Long> {
@@ -11,4 +12,6 @@ public interface ExercicioRepository extends JpaRepository<Exercicio, Long> {
     boolean existsByNomeOrUsuarioIsNull(String nome);
 
     boolean existsByNomeOrUsuarioId(String nome, Long idUsuario);
+
+    List<Exercicio> findByUsuarioIsNullOrUsuarioId(Long idUsuario);
 }
