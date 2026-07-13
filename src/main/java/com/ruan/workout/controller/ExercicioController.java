@@ -36,10 +36,32 @@ public class ExercicioController {
     }
 
     @GetMapping("/listar")
-    public ResponseEntity<String> listarExercicios() {
+    public ResponseEntity<String> listarExercicios(@RequestParam Long idUsuario) {
         try {
-            exercicioService.listar();
+            exercicioService.listar(idUsuario);
             return ResponseEntity.ok().build();
+
+        } catch (ValidationExercicioException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+    @PutMapping("/upgrade/{id}")
+    public ResponseEntity<String> upgradeExercicio(@PathVariable Long id, @RequestBody ExercicioDTO dto) {
+        try {
+            exercicioService.upgrade(id , dto);
+            return ResponseEntity.ok("Exercicio atualizado com sucesso!");
+
+        } catch (ValidationExercicioException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public  ResponseEntity<String> deleteExercicio(@PathVariable Long id) {
+        try {
+            exercicioService.delete(id);
+            return ResponseEntity.ok("Exercicio deletado com sucesso!");
 
         } catch (ValidationExercicioException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
