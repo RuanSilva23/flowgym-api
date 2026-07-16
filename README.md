@@ -28,7 +28,7 @@ O ecossistema do projeto foi escolhido com foco em performance, tipagem forte e 
 
 Esta seção demostra o planejamento das entregas do software:
 
-- [ ] Configuração inicial do ambiente e propriedades do banco de dados.
+- [ ] Configuração inicial do ambiente e propriedades do banco de dados.  
 - [ ]
 
 ---
